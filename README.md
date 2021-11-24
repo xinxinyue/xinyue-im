@@ -1,15 +1,12 @@
-# Introduction
+# 介绍
 
-This is a skeleton application using the Hyperf framework. This application is meant to be used as a starting place for those looking to get their feet wet with Hyperf Framework.
+这是一个基于[Hyperf](https://github.com/hyperf/hyperf)开发的客服聊天demo.
 
-# Requirements
+# 环境要求
 
-Hyperf has some requirements for the system environment, it can only run under Linux and Mac environment, but due to the development of Docker virtualization technology, Docker for Windows can also be used as the running environment under Windows.
+建议使用Docker运行，[hyperf\hyperf](https://hub.docker.com/r/hyperf/hyperf)有现成的环境。
 
-The various versions of Dockerfile have been prepared for you in the [hyperf\hyperf-docker](https://github.com/hyperf/hyperf-docker) project, or directly based on the already built [hyperf\hyperf](https://hub.docker.com/r/hyperf/hyperf) Image to run.
-
-When you don't want to use Docker as the basis for your running environment, you need to make sure that your operating environment meets the following requirements:  
-
+自己的环境需要满足以下配置：
  - PHP >= 7.2
  - Swoole PHP extension >= 4.4，and Disabled `Short Name`
  - OpenSSL PHP extension
@@ -18,19 +15,40 @@ When you don't want to use Docker as the basis for your running environment, you
  - Redis PHP extension （If you need to use Redis Client）
  - Protobuf PHP extension （If you need to use gRPC Server of Client）
 
-# Installation using Composer
+# 安装
 
-The easiest way to create a new Hyperf project is to use Composer. If you don't have it already installed, then please install as per the documentation.
+##获取代码：
+```
+git clone git@github.com:xinxinyue/xinyue-im.git
+```
 
-To create your new Hyperf project:
+##安装组件
+```
+composer install
+```
 
-$ composer create-project hyperf/hyperf-skeleton path/to/install
+##导入数据库
+导入im.sql文件，使用时只有一个msg表是存储聊天记录的，user和admin都可以替换为自己的
 
-Once installed, you can run the server immediately using the command below.
+##环境变量
+复制.env.example 为.env并修改配置项，需要配置redis，客服用户绑定关系、登录状态等都是redis存储。
 
-$ cd path/to/install
-$ php bin/hyperf.php start
+#启动
+项目根目录执行：
+```
+php bin/hyperf.php start
+```
+将会监听两个端口：9501是http服务负责登录等，9502是websocket服务。
 
-This will start the cli-server on port `9501`, and bind it to all network interfaces. You can then visit the site at `http://localhost:9501/`
 
-which will bring up Hyperf default home page.
+#演示
+此项目是学习使用，并没有用到生产环境中，仅供参考，另外提供前端[demo](https://github.com/xinxinyue/vue-cs-chat)演示
+
+##演示效果
+###用户登录
+
+###用户界面
+
+###管理员登录
+
+###管理员界面
