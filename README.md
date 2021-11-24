@@ -17,7 +17,7 @@
 
 # 安装
 
-##获取代码：
+## 获取代码：
 ```
 git clone git@github.com:xinxinyue/xinyue-im.git
 ```
